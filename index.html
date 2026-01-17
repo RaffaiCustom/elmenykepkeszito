@@ -14,10 +14,10 @@
 <link href="css/style.min.css" rel="stylesheet">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
 <link rel="icon" type="image/png" href="https://img.icons8.com/nolan/64/rockstar-games.png">
 
 <style>
+/* ===== ALAP ===== */
 body{
     background: radial-gradient(circle at top, #0f172a, #020617);
     color:#e5e7eb;
@@ -30,6 +30,7 @@ body{
     max-width:220px;
 }
 
+/* ===== CONTAINER ===== */
 .container{
     background:rgba(15,23,42,.75);
     backdrop-filter:blur(12px);
@@ -38,31 +39,60 @@ body{
     box-shadow:0 30px 80px rgba(0,0,0,.6);
 }
 
+/* ===== FEJLÉC ===== */
 .header h3{
     color:#60a5fa;
     font-weight:700;
 }
-
 .header h5{
     color:#94a3b8;
 }
 
-.form-control, textarea{
-    background:#020617;
-    border:1px solid #1e293b;
-    color:#e5e7eb;
+/* ===== BOOTSTRAP ROW FIX (ELCSÚSZÁS) ===== */
+.row{
+    margin-left:0;
+    margin-right:0;
+}
+
+/* ===== INPUTOK (MINDEN SÖTÉT) ===== */
+.form-control,
+textarea.form-control,
+input.form-control{
+    background-color:#020617 !important;
+    border:1px solid #1e293b !important;
+    color:#e5e7eb !important;
     border-radius:10px;
 }
 
-.form-control:focus, textarea:focus{
-    border-color:#3b82f6;
+.form-control:focus,
+textarea:focus{
+    border-color:#3b82f6 !important;
     box-shadow:0 0 0 2px rgba(59,130,246,.35);
 }
 
+/* readonly mezők – itt volt a FEHÉR HIBA */
 input[readonly]{
-    opacity:.9;
+    background-color:#020617 !important;
+    color:#c7d2fe !important;
+    opacity:1 !important;
+    cursor:default;
 }
 
+/* placeholder */
+::placeholder{
+    color:#64748b !important;
+}
+
+/* ===== RP PÉLDA BLOKKOK ===== */
+.pld1, .pld2, .pld3, .pld4{
+    margin-bottom:12px;
+    background:rgba(2,6,23,.6);
+    padding:10px;
+    border-radius:10px;
+    border:1px solid #1e293b;
+}
+
+/* ===== BEÁLLÍTÁSOK ===== */
 .clog_settings{
     display:flex;
     justify-content:space-between;
@@ -72,6 +102,7 @@ input[readonly]{
     margin-bottom:20px;
 }
 
+/* ===== GOMBOK ===== */
 .btn, .button{
     background:linear-gradient(135deg,#2563eb,#3b82f6);
     border:none;
@@ -92,13 +123,7 @@ input[readonly]{
     color:#64748b;
 }
 
-.alert-info{
-    background:rgba(2,6,23,.85);
-    border:1px solid #1e293b;
-    color:#c7d2fe;
-    border-radius:12px;
-}
-
+/* ===== OUTPUT ===== */
 .output{
     background:#020617;
     border:1px solid #1e293b;
@@ -107,6 +132,15 @@ input[readonly]{
     margin-top:15px;
 }
 
+/* ===== ALERT ===== */
+.alert-info{
+    background:rgba(2,6,23,.85);
+    border:1px solid #1e293b;
+    color:#c7d2fe;
+    border-radius:12px;
+}
+
+/* ===== MOBIL ===== */
 @media(max-width:768px){
     .clog_settings{
         flex-direction:column;
