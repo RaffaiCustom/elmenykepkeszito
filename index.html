@@ -48,62 +48,48 @@ body{
     color:#94a3b8;
 }
 
-/* ===== ROW FIX ===== */
+/* ===== BOOTSTRAP ROW FIX (ELCSÚSZÁS) ===== */
 .row{
     margin-left:0;
     margin-right:0;
 }
 
-/* ===== INPUTOK ===== */
+/* ===== INPUTOK (MINDEN SÖTÉT) ===== */
 .form-control,
-textarea.form-control{
+textarea.form-control,
+input.form-control{
     background-color:#020617 !important;
     border:1px solid #1e293b !important;
     color:#e5e7eb !important;
     border-radius:10px;
 }
 
-input[readonly]{
-    color:#c7d2fe !important;
-    opacity:1 !important;
+.form-control:focus,
+textarea:focus{
+    border-color:#3b82f6 !important;
+    box-shadow:0 0 0 2px rgba(59,130,246,.35);
 }
 
+/* readonly mezők – itt volt a FEHÉR HIBA */
+input[readonly]{
+    background-color:#020617 !important;
+    color:#c7d2fe !important;
+    opacity:1 !important;
+    cursor:default;
+}
+
+/* placeholder */
 ::placeholder{
     color:#64748b !important;
 }
 
-/* ===== RP MEZŐK – IGAZÍTÁS ===== */
-.pld1, .pld2, .pld3{
-    display:inline-block;
-    width:32%;
-    vertical-align:top;
+/* ===== RP PÉLDA BLOKKOK ===== */
+.pld1, .pld2, .pld3, .pld4{
     margin-bottom:12px;
     background:rgba(2,6,23,.6);
     padding:10px;
     border-radius:10px;
     border:1px solid #1e293b;
-}
-
-.pld4{
-    width:100%;
-    margin-bottom:12px;
-    background:rgba(2,6,23,.6);
-    padding:10px;
-    border-radius:10px;
-    border:1px solid #1e293b;
-}
-
-/* ===== BETŰMÉRET GOMBOK ===== */
-.fontsize .col-xs-12{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    flex-wrap:wrap;
-}
-
-#font-label{
-    width:100%;
-    margin-bottom:6px;
 }
 
 /* ===== BEÁLLÍTÁSOK ===== */
@@ -124,6 +110,12 @@ input[readonly]{
     border-radius:10px;
     padding:8px 14px;
     font-weight:600;
+    transition:.2s;
+}
+
+.btn:hover, .button:hover{
+    transform:translateY(-1px);
+    box-shadow:0 10px 30px rgba(59,130,246,.4);
 }
 
 .btn.disabled{
@@ -150,10 +142,6 @@ input[readonly]{
 
 /* ===== MOBIL ===== */
 @media(max-width:768px){
-    .pld1, .pld2, .pld3{
-        width:100%;
-    }
-
     .clog_settings{
         flex-direction:column;
         gap:10px;
@@ -184,7 +172,7 @@ input[readonly]{
     <div class="clog_settings">
         <div class="row fontsize" id="bal">
             <div class="col-xs-12">
-                <span id="font-label">Betűméret (13px):</span>
+                <span id="font-label">Betűméret (13px):</span><br>
                 <button class="btn btn-default disabled" id="decrease-fontsize">-</button>
                 <button class="btn btn-default" id="reset-fontsize">visszaállítás</button>
                 <button class="btn btn-default" id="increase-fontsize">+</button>
@@ -225,7 +213,10 @@ input[readonly]{
     <br>
 
     <div class="alert alert-info">
-        Ez az oldal segítséget nyújt minden élménykép készítőnek.
+        Ez az oldal segítséget nyújt minden élménykép készítőnek.<br><br>
+        <strong>Tipp:</strong> 800x600-as kép ajánlott.
+        <br><br>
+        <i>suttogja — mondja távolról — mondja a megafonba — mondja a rádióba</i>
     </div>
 
     <button onclick="location.href='https://www.youtube.com/watch?v=rNrSYgHUIAU&t=1261s'" class="button">
