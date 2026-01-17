@@ -1,101 +1,203 @@
 <!DOCTYPE html>
 <html lang="hu">
-	
-<!-- Mirrored from markmihalyi.github.io/ChatLog/chatlog2/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 17 Jan 2026 20:16:25 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-	    	<meta name="author" content="Raffai Custom">
-		<meta name="description" content="MTA Élménykép segédlet - RP sorok szépítése, rendezése.">
-		<meta name="keywords" content="MTA,SA,SAMP,GTA,multiplayer,élménykép,chatlog,magician,segédlet,seemta,hungarylife,lsrp,advancedroleplay,finemta">
-		<title>Élménykép szerkesztő - Segédlet</title>
-		<link href="libs/bootstrap.min.css" rel="stylesheet">
-		<link href="libs/spectrum.min.css" rel="stylesheet">
-		<link href="css/style.min.css" rel="stylesheet">
-		<link rel="icon" type="image/png" href="../../../img.icons8.com/nolan/64/rockstar-games.png">
-	</head>
-	<body>
-		 <div class="container">
-		 	<div class="row header">
-				<div class="col-xs-12">
-					<h3 style="text-align:center;font-weight:bold;">Élménykép szerkesztő - Segédlet</h2>
-					<h5 style="text-align:center;font-style:italic;">West MTA</h5><br>
-				</div>  
-			</div>
-			<div class="row name">
-				<div class="col-xs-12">
-					<input type="hidden" class="form-control" id="name">
-				</div>  
-			</div>
-			<div class="clog_settings">
-				<div class="row fontsize" id="bal">
-					<div class="col-xs-12">
-						<span id="font-label">Betűméret (13px):</span><br>
-						<button class="btn btn-default disabled" type="submit" id="decrease-fontsize">-</button>
-						<button class="btn btn-default" type="submit" id="reset-fontsize">visszaállítás</button>
-						<button class="btn btn-default" type="submit" id="increase-fontsize">+</button>
-					</div>  
-				</div>  
-				<div class="row color" id="jobb">
-					<div class="col-xs-12">
-						<span>Háttérszín:</span>
-						<input type='text' id="color-picker"/>
-						<br>
-					</div>  
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="pld1">
-						<label>Cselekvés (me):</label>
-						<input type="text" id="pld1" name="pld1" class="form-control" value="*** NÉV szakad a nevetéstől." readonly />
-					</div>
-					<div class="pld2">
-						<label>Történés (do):</label>
-						<input type="text" id="pld2" name="pld2" class="form-control" value="*Megcsúszik. ((NÉV))" readonly /> 
-					</div>
-					<div class="pld3">
-						<label>Jellemzés (ame):</label>
-						<input type="text" id="pld3" name="pld3" class="form-control" value=">> NÉV egy menő srác." readonly />
-					</div>
-					<div class="pld4">
-						<label>Általános csevegés (say):</label>
-						<input type="text" id="pld4" name="pld4" class="form-control" value="NÉV mondja: Szevasz." readonly /> 
-					</div>
-					<div class="clearfix"></div>
-				</div>  
-			<div class="row">
-				<div class="col-xs-12">
-					<textarea class="form-control" rows="15" placeholder="Ide írd be az rp sorokat."></textarea>
-					<div class="output"></div>  
-				</div>  
-			</div>  
-			<div class="row">
-				<div class="col-xs-12">
-					<br>
-					<div class="alert alert-info" role="alert">
-						Ez az oldal segítséget nyújt minden élménykép készítőnek, beszélgetéseket, rp sorokat könnyedén meg tudod formázni itt, MTA-n belül csupán a háttérképet kell lefotózni.
-						<br>
-						<br>
-						<strong>Tipp:</strong> A kép mérete legyen 800x600-as. Photoshopba illesztés után a szöveg körüli fekete részt a varázspálca segítségével tüntesd el. Ezután a jobb oldali rétegeknél kattints duplán a layerre, és adj hozzá egy 1-es méretű körvonalat külső pozícióval. <strong>_.raffai2._</strong>
-						<br>
-						<br>
-						<u>Egyéb használható dolgok:</u> <i>suttogja &#8212; mondja távolról &#8212; mondja a megafonba &#8212; mondja a rádióba</i>
-					</div>
-				</div>  
-			</div>  
-			<button onclick="location.href = 'https://www.youtube.com/watch?v=rNrSYgHUIAU&t=1261s'" class="button" type="button">Ha szeretnél teljekörű segítséget kattints erre a gombra!</button>
-		</div>  
-		<script src="libs/jquery.min.js"></script>
-		<script src="libs/json2.min.js"></script>
-		<script src="libs/jstorage.min.js"></script>
-		<script src="libs/bootstrap.min.js"></script>
-		<script src="libs/spectrum.min.js"></script>
-		<script src="js/scripts.min.js"></script>
-		<script src="js/copy.js"></script>
-	</body>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Raffai Custom">
+<meta name="description" content="MTA Élménykép segédlet - RP sorok szépítése, rendezése.">
+<meta name="keywords" content="MTA,SA,SAMP,GTA,multiplayer,élménykép,chatlog,magician">
+<title>Élménykép szerkesztő - Segédlet</title>
 
-<!-- Mirrored from markmihalyi.github.io/ChatLog/chatlog2/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 17 Jan 2026 20:16:27 GMT -->
+<link href="libs/bootstrap.min.css" rel="stylesheet">
+<link href="libs/spectrum.min.css" rel="stylesheet">
+<link href="css/style.min.css" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/png" href="https://img.icons8.com/nolan/64/rockstar-games.png">
+
+<style>
+body{
+    background: radial-gradient(circle at top, #0f172a, #020617);
+    color:#e5e7eb;
+    font-family:'Inter',sans-serif;
+}
+
+.logo{
+    display:block;
+    margin:40px auto 20px;
+    max-width:220px;
+}
+
+.container{
+    background:rgba(15,23,42,.75);
+    backdrop-filter:blur(12px);
+    border-radius:16px;
+    padding:30px;
+    box-shadow:0 30px 80px rgba(0,0,0,.6);
+}
+
+.header h3{
+    color:#60a5fa;
+    font-weight:700;
+}
+
+.header h5{
+    color:#94a3b8;
+}
+
+.form-control, textarea{
+    background:#020617;
+    border:1px solid #1e293b;
+    color:#e5e7eb;
+    border-radius:10px;
+}
+
+.form-control:focus, textarea:focus{
+    border-color:#3b82f6;
+    box-shadow:0 0 0 2px rgba(59,130,246,.35);
+}
+
+input[readonly]{
+    opacity:.9;
+}
+
+.clog_settings{
+    display:flex;
+    justify-content:space-between;
+    background:rgba(2,6,23,.6);
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:20px;
+}
+
+.btn, .button{
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
+    border:none;
+    color:#fff;
+    border-radius:10px;
+    padding:8px 14px;
+    font-weight:600;
+    transition:.2s;
+}
+
+.btn:hover, .button:hover{
+    transform:translateY(-1px);
+    box-shadow:0 10px 30px rgba(59,130,246,.4);
+}
+
+.btn.disabled{
+    background:#1e293b;
+    color:#64748b;
+}
+
+.alert-info{
+    background:rgba(2,6,23,.85);
+    border:1px solid #1e293b;
+    color:#c7d2fe;
+    border-radius:12px;
+}
+
+.output{
+    background:#020617;
+    border:1px solid #1e293b;
+    border-radius:10px;
+    padding:15px;
+    margin-top:15px;
+}
+
+@media(max-width:768px){
+    .clog_settings{
+        flex-direction:column;
+        gap:10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<img src="https://westmta.com/logo.svg" class="logo" alt="WestMTA">
+
+<div class="container">
+
+    <div class="row header">
+        <div class="col-xs-12 text-center">
+            <h3>Élménykép szerkesztő - Segédlet</h3>
+            <h5>West MTA stílus</h5>
+        </div>
+    </div>
+
+    <div class="row name">
+        <div class="col-xs-12">
+            <input type="hidden" class="form-control" id="name">
+        </div>
+    </div>
+
+    <div class="clog_settings">
+        <div class="row fontsize" id="bal">
+            <div class="col-xs-12">
+                <span id="font-label">Betűméret (13px):</span><br>
+                <button class="btn btn-default disabled" id="decrease-fontsize">-</button>
+                <button class="btn btn-default" id="reset-fontsize">visszaállítás</button>
+                <button class="btn btn-default" id="increase-fontsize">+</button>
+            </div>
+        </div>
+
+        <div class="row color" id="jobb">
+            <div class="col-xs-12">
+                <span>Háttérszín:</span>
+                <input type="text" id="color-picker">
+            </div>
+        </div>
+    </div>
+
+    <div class="pld1">
+        <label>Cselekvés (me):</label>
+        <input type="text" id="pld1" class="form-control" value="*** NÉV szakad a nevetéstől." readonly>
+    </div>
+
+    <div class="pld2">
+        <label>Történés (do):</label>
+        <input type="text" id="pld2" class="form-control" value="*Megcsúszik. ((NÉV))" readonly>
+    </div>
+
+    <div class="pld3">
+        <label>Jellemzés (ame):</label>
+        <input type="text" id="pld3" class="form-control" value=">> NÉV egy menő srác." readonly>
+    </div>
+
+    <div class="pld4">
+        <label>Általános csevegés (say):</label>
+        <input type="text" id="pld4" class="form-control" value="NÉV mondja: Szevasz." readonly>
+    </div>
+
+    <textarea class="form-control" rows="15" placeholder="Ide írd be az rp sorokat."></textarea>
+    <div class="output"></div>
+
+    <br>
+
+    <div class="alert alert-info">
+        Ez az oldal segítséget nyújt minden élménykép készítőnek.<br><br>
+        <strong>Tipp:</strong> 800x600-as kép ajánlott.
+        <br><br>
+        <i>suttogja — mondja távolról — mondja a megafonba — mondja a rádióba</i>
+    </div>
+
+    <button onclick="location.href='https://www.youtube.com/watch?v=rNrSYgHUIAU&t=1261s'" class="button">
+        Teljes segítség videó
+    </button>
+
+</div>
+
+<script src="libs/jquery.min.js"></script>
+<script src="libs/json2.min.js"></script>
+<script src="libs/jstorage.min.js"></script>
+<script src="libs/bootstrap.min.js"></script>
+<script src="libs/spectrum.min.js"></script>
+<script src="js/scripts.min.js"></script>
+<script src="js/copy.js"></script>
+
+</body>
 </html>
